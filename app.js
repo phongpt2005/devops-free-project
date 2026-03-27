@@ -26,7 +26,7 @@ app.get('/health', (req, res) => {
 app.get('/info', (req, res) => {
   res.json({
     app: 'DevOps Demo',
-    version: '1.0.0',
+    version: '2.0.0',
     node_version: process.version,
     build_time: process.env.BUILD_TIME || 'local',
     commit_sha: process.env.COMMIT_SHA || 'unknown'
