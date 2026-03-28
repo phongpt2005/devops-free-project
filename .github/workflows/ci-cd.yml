@@ -75,10 +75,10 @@ jobs:
       - name: 🔍 Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ghcr.io/${{ github.repository }}/devops-demo:latest'
+          image-ref: 'ghcr.io/${{ github.repository }}:latest'
           format: 'table'
           exit-code: '0'
-          ignore-unfixed: true
+          ignore-unfixed: true  
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
