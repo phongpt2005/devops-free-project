@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 // Trang chủ - API chính
 app.get('/', (req, res) => {
   res.json({
-    message: '🚧 STAGING VERSION',
+    message: '🚀 PRODUCTION VERSION',
     version: '1.0.0',
     environment: process.env.NODE_ENV || 'development',
     platform: 'Render.com + GitHub Actions',
