@@ -15,10 +15,13 @@ app.get('/', (req, res) => {
 
 // Health check endpoint - dùng cho monitoring
 app.get('/health', (req, res) => {
-  res.status(500).json({
-    status: 'broken'
+  res.status(200).json({
+    status: 'healthy',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
   });
 });
+
 // Info endpoint - hiển thị thông tin build
 app.get('/info', (req, res) => {
   res.json({
