@@ -15,13 +15,10 @@ app.get('/', (req, res) => {
 
 // Health check endpoint - dùng cho monitoring
 app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'healthy',
-    uptime: process.uptime(),
-    timestamp: new Date().toISOString()
+  res.status(500).json({
+    status: 'broken'
   });
 });
-
 // Info endpoint - hiển thị thông tin build
 app.get('/info', (req, res) => {
   res.json({
@@ -32,8 +29,12 @@ app.get('/info', (req, res) => {
     commit_sha: process.env.COMMIT_SHA || 'unknown'
   });
 });
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📍 Health check: http://localhost:${PORT}/health`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📍 Health check: http://localhost:${PORT}/health`);
-});
+// Export app cho test
+module.exports = app;
